@@ -16,3 +16,4 @@ D:\School\CS345\ImageProcessing\ImageProcessing\bin\Debug\net8.0-windows\ImagePr
 D:\School\CS345\ImageProcessing\ImageProcessing\bin\Debug\net8.0-windows\ImageProcessing.pdb
 D:\School\CS345\ImageProcessing\ImageProcessing\obj\Debug\net8.0-windows\ImageProcessing.genruntimeconfig.cache
 D:\School\CS345\ImageProcessing\ImageProcessing\obj\Debug\net8.0-windows\ref\ImageProcessing.dll
+D:\School\CS345\ImageProcessing\ImageProcessing\obj\Debug\net8.0-windows\ImageProcessing.Properties.Resources.resources

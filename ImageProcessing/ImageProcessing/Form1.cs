@@ -1,3 +1,4 @@
+using System.Drawing.Drawing2D;
 using System.Runtime.Intrinsics.X86;
 using System.Windows.Forms;
 using WebCamLib;
@@ -6,8 +7,9 @@ namespace ImageProcessing
     public partial class Form1 : Form
     {
 
-        Bitmap loaded, processed;
+        Bitmap loaded, processed, filter, savedcopy;
         Device[] mgaDevice;
+        String filename;
         public Form1()
         {
             InitializeComponent();
@@ -82,8 +84,10 @@ namespace ImageProcessing
 
         private void openFileDialog1_FileOk(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            loaded = new Bitmap(openFileDialog1.FileName);
+            filename = openFileDialog1.FileName;
+            loaded = new Bitmap(filename);
             pictureBox1.Image = loaded;
+            savedcopy = new Bitmap(filename);
         }
 
         private void openToolStripMenuItem_Click(object sender, EventArgs e)
@@ -385,6 +389,72 @@ namespace ImageProcessing
                 }
             }
             pictureBox2.Image = processed;
+        }
+
+        private void gaussianBlurToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            filter = loaded;
+            ImageProcess2.BitmapFilter.GaussianBlur(filter, 4);
+            pictureBox2.Image = filter;
+        }
+
+        private void sharpenToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            filter = loaded;
+            ImageProcess2.BitmapFilter.Sharpen(filter, 11);
+            pictureBox2.Image = filter;
+        }
+
+        private void meanRemovalToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            filter = loaded;
+            ImageProcess2.BitmapFilter.MeanRemoval(filter, 9);
+            pictureBox2.Image = filter;
+        }
+
+        private void embossingToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            filter = loaded;
+            ImageProcess2.BitmapFilter.EmbossLaplacian(filter);
+            pictureBox2.Image = filter;
+        }
+
+        private void horizontalVerticalToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            filter = loaded;
+            ImageProcess2.BitmapFilter.EmbossHorsVers(filter);
+            pictureBox2.Image = filter;
+        }
+
+        private void lossyToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            filter = loaded;
+            ImageProcess2.BitmapFilter.Sharpen(filter, 11);
+            pictureBox2.Image = filter;
+        }
+
+        private void horizontalOnlyToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            filter = loaded;
+            ImageProcess2.BitmapFilter.Sharpen(filter, 11);
+            pictureBox2.Image = filter;
+        }
+
+        private void verticalOnlyToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            filter = loaded;
+            ImageProcess2.BitmapFilter.Sharpen(filter, 11);
+            pictureBox2.Image = filter;
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            if(loaded != null)
+            {
+                loaded = new Bitmap(filename);
+                pictureBox2.Image = loaded;
+            }
+            
         }
     }
 
