@@ -429,21 +429,21 @@ namespace ImageProcessing
         private void lossyToolStripMenuItem_Click(object sender, EventArgs e)
         {
             filter = loaded;
-            ImageProcess2.BitmapFilter.Sharpen(filter, 11);
+            ImageProcess2.BitmapFilter.EmbossLossy(filter);
             pictureBox2.Image = filter;
         }
 
         private void horizontalOnlyToolStripMenuItem_Click(object sender, EventArgs e)
         {
             filter = loaded;
-            ImageProcess2.BitmapFilter.Sharpen(filter, 11);
+            ImageProcess2.BitmapFilter.EmbossHor(filter);
             pictureBox2.Image = filter;
         }
 
         private void verticalOnlyToolStripMenuItem_Click(object sender, EventArgs e)
         {
             filter = loaded;
-            ImageProcess2.BitmapFilter.Sharpen(filter, 11);
+            ImageProcess2.BitmapFilter.EmbossVert(filter);
             pictureBox2.Image = filter;
         }
 
